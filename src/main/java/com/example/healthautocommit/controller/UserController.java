@@ -50,5 +50,9 @@ public class UserController {
         }
         return R.error().data("info", "账号密码错误");
     }
+    @GetMapping("a")
+    public String sayA() {
+        return "a";
+    }
 }
 
