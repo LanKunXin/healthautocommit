@@ -58,9 +58,5 @@ public class UserController {
     public String sayB() {
         return "B";
     }
-    @GetMapping("C")
-    public String sayC() {
-        return "C";
-    }
 }
 
