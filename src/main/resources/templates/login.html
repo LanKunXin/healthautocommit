@@ -1,0 +1,92 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试页面</title>
+    &lt;!&ndash; cdn引入ElementUI样式 &ndash;&gt;
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+<div id="app">
+    <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
+        <el-form-item
+                prop="email"
+                label="邮箱"
+                :rules="[
+      { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+      { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+    ]"
+        >
+            <el-input v-model="dynamicValidateForm.email"></el-input>
+        </el-form-item>
+        <el-form-item
+                v-for="(domain, index) in dynamicValidateForm.domains"
+                :label="'域名' + index"
+                :key="domain.key"
+                :prop="'domains.' + index + '.value'"
+                :rules="{
+      required: true, message: '域名不能为空', trigger: 'blur'
+    }"
+        >
+            <el-input v-model="domain.value"></el-input><el-button @click.prevent="removeDomain(domain)">删除</el-button>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" @click="submitForm('dynamicValidateForm')">提交</el-button>
+            <el-button @click="addDomain">新增域名</el-button>
+            <el-button @click="resetForm('dynamicValidateForm')">重置</el-button>
+        </el-form-item>
+    </el-form>
+
+</div>
+
+&lt;!&ndash;cdn引入ElementUI组件必须先引入Vue&ndash;&gt;
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+&lt;!&ndash; cdn引入ElementUI组件库 &ndash;&gt;
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/javascript">
+    const vm = new Vue({ // 配置对象 options
+        // 配置选项(option)
+        el: '#app',  // element: 指定用vue来管理页面中的哪个标签区域
+        data: {
+            dynamicValidateForm: {
+                domains: [{
+                    value: ''
+                }],
+                email: ''
+            }
+        },
+        methods: {
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        alert('submit!');
+                    } else {
+                        console.log('error submit!!');
+                return false;
+            }
+            });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            },
+            removeDomain(item) {
+                var index = this.dynamicValidateForm.domains.indexOf(item)
+                if (index !== -1) {
+                    this.dynamicValidateForm.domains.splice(index, 1)
+                }
+            },
+            addDomain() {
+                this.dynamicValidateForm.domains.push({
+                    value: '',
+                    key: Date.now()
+                });
+            }
+        }
+    })
+</script>
+
+
+</body>
+</html>-->

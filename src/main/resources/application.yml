@@ -1,0 +1,20 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: health-auto-commit
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql:///health?useSSL=false&serverTimezone=GMT%2B8
+      username: root
+      password: 123456
+  jackson:
+      date-format: yyyy-MM-dd HH:mm:ss
+      time-zone: GMT+8
+  profiles:
+    active: dev
+mybatis-plus:
+  mapper-locations: classpath:com/example/healthautocommit/mapper/xml/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
